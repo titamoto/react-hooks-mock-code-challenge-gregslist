@@ -1,19 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:6001/listings")
-      .then((r) => r.json())
-      .then((cards) => setCards(cards));
-  }, []);
-
-  function onDelete(id) {
-    setCards(cards.filter((card) => card.id !== id));
-  }
-
+function ListingsContainer({ cards, onDelete }) {
   return (
     <main>
       <ul className="cards">
